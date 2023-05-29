@@ -1,10 +1,16 @@
 kind: pipeline
 type: docker
-name: default
+name: hello-world
 
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
+- name: docker  
+  image: plugins/docker
+  settings:
+    # registry: docker.io
+    repo: pavansa/bangaloretour
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 
+      - latest
